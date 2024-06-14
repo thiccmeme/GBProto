@@ -32,7 +32,7 @@ namespace GBTemplate
             gb = GBConsoleController.GetInstance();
 
             //Have some music playing!
-            gb.Sound.PlayMusic(exampleMusic);
+           // gb.Sound.PlayMusic(exampleMusic);
         }
 
         // Update is called once per frame
@@ -43,6 +43,7 @@ namespace GBTemplate
             if (gb.Input.ButtonSelectJustPressed)
             {
                 gb.Display.PaletteCycleNext();
+                Debug.Log("fuck");
             }
 
             if (gb.Input.ButtonAJustPressed)
@@ -57,15 +58,15 @@ namespace GBTemplate
 
             if (gb.Input.ButtonStartJustPressed && !gb.Display.Fading)
             {
-                StartCoroutine(FadeTest());
+                //StartCoroutine(FadeTest());
                 whiteFade = !whiteFade;
             }
         }
 
         private void UpdateInputTest()
         {
-            sprUp.color = gb.Input.Up ? inputColorActive : inputColorInactive;
-            sprDown.color = gb.Input.Down ? inputColorActive : inputColorInactive;
+           // sprUp.color = gb.Input.Up ? inputColorActive : inputColorInactive;
+           /* sprDown.color = gb.Input.Down ? inputColorActive : inputColorInactive;
             sprLeft.color = gb.Input.Left ? inputColorActive : inputColorInactive;
             sprRight.color = gb.Input.Right ? inputColorActive : inputColorInactive;
             sprSelect.color = gb.Input.ButtonSelect ? inputColorActive : inputColorInactive;
@@ -87,7 +88,7 @@ namespace GBTemplate
                 yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(2));
                 //Insert you action / scene transition here
                 yield return gb.Display.StartCoroutine(gb.Display.FadeFromBlack(2));
-            }
+            }*/
         }
     }
 }
