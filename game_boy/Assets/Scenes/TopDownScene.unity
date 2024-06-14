@@ -352,15 +352,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.20717423
+    x: 0
     y: 0
-    width: 0.5856515
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 48
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10631,7 +10631,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143363002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
@@ -20704,9 +20704,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 563564368002382087, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: _xSpeed
+      value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 563564368002382087, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: _ySpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4564704408761563958, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054875360326963570, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1361301742, guid: e1fb23f7015483141a43e5eacf8d041e, type: 3}
+    - target: {fileID: 8345519956667534795, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345519956667534795, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345519956667534795, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8345519956667534795, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20747,6 +20771,10 @@ PrefabInstance:
     - target: {fileID: 8345519956667534795, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345519956667534795, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
