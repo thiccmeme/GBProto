@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LockedDoor : MonoBehaviour
+public class LockedDoor : MonoBehaviour, IDoor
 {
     [SerializeField] private GameObject _exit;
     [SerializeField] private Sprite _openedDoorSprite; //TODO Sprite should be replaced in scene

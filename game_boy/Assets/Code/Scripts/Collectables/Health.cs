@@ -1,21 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class HealthEvent : UnityEvent<int>
-{
-}
-
 public class Health : MonoBehaviour
 {
     [SerializeField] private int _healthAmount;
 
-    HealthEvent increasehealth;
+    UnityEvent<int> increasehealth;
     PlayerStats _playerStats;
 
     private void Awake()
     {
-        increasehealth = new HealthEvent();
+        increasehealth = new UnityEvent<int>();
 
         _playerStats = FindAnyObjectByType<PlayerStats>();
         increasehealth.AddListener(_playerStats.IncreaseHealth);
