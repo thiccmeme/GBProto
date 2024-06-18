@@ -3,15 +3,16 @@ using UnityEngine.Events;
 
 public class KeyLockedDoor : LockedDoor
 {
-    UnityEvent decreaseKey;
     PlayerStats _playerStats;
+    UnityEvent decreaseKey;
 
     bool _isDoorOpened = false;
 
     private void Awake()
     {
-        decreaseKey = new UnityEvent();
         _playerStats = FindAnyObjectByType<PlayerStats>();
+
+        decreaseKey = new UnityEvent();
         decreaseKey.AddListener(_playerStats.DecreaseKey);
     }
 
@@ -19,7 +20,7 @@ public class KeyLockedDoor : LockedDoor
     {
         if(collision.gameObject.tag == "Player")
         {
-            if(_playerStats.keys > 0 && !_isDoorOpened)
+            if(_playerStats.playerStats.keys > 0 && !_isDoorOpened)
             {
                 OpenDoor();
                 decreaseKey.Invoke(); //decrease player key (playerStats)

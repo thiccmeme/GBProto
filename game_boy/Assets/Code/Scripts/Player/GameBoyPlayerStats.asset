@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a67ec0881a3784f89735e5536e3958, type: 3}
   m_Name: GameBoyPlayerStats
   m_EditorClassIdentifier: 
-  health: 0
+  maxHealth: 100
+  minHealth: 0
+  health: 100
+  maxPower: 100
+  minPower: 0
+  power: 100
+  minScore: 0
   score: 0
-  keys: 0
+  keys: 1

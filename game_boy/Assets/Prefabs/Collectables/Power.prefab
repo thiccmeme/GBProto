@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3929628516283397910}
   - component: {fileID: 6556187065717032705}
   - component: {fileID: 2137266624373024143}
-  - component: {fileID: 3314276135002096714}
+  - component: {fileID: 7085076441246595543}
   m_Layer: 0
-  m_Name: Key
+  m_Name: Power
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1789071739, guid: da801c33886bbd944aa231a34b65c211, type: 3}
+  m_Sprite: {fileID: 2093364993, guid: da801c33886bbd944aa231a34b65c211, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.375}
+    oldSize: {x: 0.4375, y: 0.3125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.375}
   m_EdgeRadius: 0
---- !u!114 &3314276135002096714
+--- !u!114 &7085076441246595543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303803467791461693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3352c0e370784304b9a41fe203bcd347, type: 3}
+  m_Script: {fileID: 11500000, guid: d9616c353c6757d4184eb94ec9ff7b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _powerAmount: 10

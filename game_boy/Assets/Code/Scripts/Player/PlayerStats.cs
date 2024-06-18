@@ -2,57 +2,65 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int health { get; private set; }
-    public int score { get; private set; }
-    public int keys { get; private set; }
-
-    private void Awake()
-    {
-        keys = 1;
-        health = 100;
-        score = 0;
-    }
+    [SerializeField] public PlayerStatsSO playerStats;
 
     public void IncreaseHealth(int healthAmount)
     {
-        health += healthAmount;
-        Debug.Log("Health: " + health);
+        playerStats.health += healthAmount;
+        playerStats.health = Mathf.Clamp(playerStats.health, playerStats.minHealth, playerStats.maxHealth);
+        Debug.Log("Health: " + playerStats.health);
         //TODO: Invoke UI event to update health
     }
 
     public void DecreaseHealth(int healthAmount)
     {
-        health -= healthAmount;
-        Debug.Log("Health: " + health);
+        playerStats.health -= healthAmount;
+        Debug.Log("Health: " + playerStats.health);
+        playerStats.health = Mathf.Clamp(playerStats.health, playerStats.minHealth, playerStats.maxHealth);
         //TODO: Invoke UI event to update health
+    }
+
+    public void IncreasePower(int powerAmount)
+    {
+        playerStats.power += powerAmount;
+        playerStats.power = Mathf.Clamp(playerStats.power, playerStats.minPower, playerStats.maxPower);
+        Debug.Log("Power: " + playerStats.power);
+        //TODO: Invoke UI event to update power
+    }
+
+    public void DecreasePower(int powerAmount)
+    {
+        playerStats.power -= powerAmount;
+        playerStats.power = Mathf.Clamp(playerStats.power, playerStats.minPower, playerStats.maxPower);
+        Debug.Log("Power: " + playerStats.power);
+        //TODO: Invoke UI event to update power
     }
 
     public void IncreaseScore(int scoreAmount)
     {
-        score += scoreAmount;
-        Debug.Log("Score: " + score);
+        playerStats.score += scoreAmount;
+        Debug.Log("Score: " + playerStats.score);
         //TODO: Invoke UI event to update score
     }
 
     public void DecreaseScore(int scoreAmount)
     {
-        score -= scoreAmount;
-        Debug.Log("Score: " + score);
+        playerStats.score -= scoreAmount;
+        Debug.Log("Score: " + playerStats.score);
         //TODO: Invoke UI event to update score
     }
 
     public void IncreaseKey()
     {
-        keys++;
-        Debug.Log("Keys: " + keys);
+        playerStats.keys++;
+        Debug.Log("Keys: " + playerStats.keys);
         //TODO: Invoke UI event to update keys
     }
 
     public void DecreaseKey()
     {
-        keys--;
-        Debug.Log("Keys: " + keys);
+        playerStats.keys--;
+        Debug.Log("Keys: " + playerStats.keys);
         //TODO: Invoke UI event to update keys
     }
-
 }
