@@ -7,14 +7,12 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private PlayerDirection _dir;
-    private Rigidbody2D _rb;
     private Animator _an;
     private SpriteRenderer _spr;
     private PlayerController _pc;
     private void Awake()
     {
         _dir = GetComponent<PlayerDirection>();
-        _rb = GetComponent<Rigidbody2D>();
         _an = GetComponent<Animator>();
         _spr = GetComponent<SpriteRenderer>();
         _pc = GetComponent<PlayerController>();
@@ -22,23 +20,37 @@ public class PlayerAnimation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandleAnimation();
-        UpdateDirection();
+        if(_pc.movement.sqrMagnitude > 0.01f)
+            HandleAnimation();
+        else
+            SitStill(); 
     }
 
     private void HandleAnimation()
     {
         _an.SetFloat("MovementX", _pc.movement.x);
         _an.SetFloat("MovementY", _pc.movement.y);
-        if (IsMoving())
+        _an.SetFloat("Speed", _pc.movement.sqrMagnitude);
+
+        switch (_dir.directionX)
         {
-            _an.SetFloat("Speed", _pc.movement.sqrMagnitude);
+            case -1:
+                _spr.flipX = false;
+                break;
+            case 1:
+                _spr.flipX = true;
+                break;
         }
-        else
-            _an.SetFloat("Speed", 0f);
     }
 
-    private void UpdateDirection()
+    private void SitStill()
+    {
+        if (_an.GetFloat("Speed") == 0f)
+            return;
+        _an.SetFloat("Speed", 0f);
+    }
+
+    /*private void UpdateDirection()
     {
         switch (_dir.directionX)
         {
@@ -60,13 +72,5 @@ public class PlayerAnimation : MonoBehaviour
                 _an.SetFloat("DirectionY", 1f); //up
                 break;
         }
-    }
-
-    private bool IsMoving()
-    {
-        if (_pc.movement.y == 0 && _pc.movement.x == 0)  
-            return false;
-        else 
-            return true;
-    }
+    }*/
 }
