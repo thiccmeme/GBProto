@@ -5,15 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - MovableObject
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Sprites
   - Water
   - UI
-  - 
-  - 
+  - Tiles-FG
+  - Tiles-BG
   - 
   - 
   - 
