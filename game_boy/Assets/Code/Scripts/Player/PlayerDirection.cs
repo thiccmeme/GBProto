@@ -8,6 +8,8 @@ public class PlayerDirection : MonoBehaviour
     private PlayerController _pc;
     private Rigidbody2D _rb;
     
+    public int directionY { get; private set; }
+    public int directionX { get; private set; }
     /// <summary>
     /// X
     /// -1 is down
@@ -25,26 +27,29 @@ public class PlayerDirection : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        if(_pc.movement.sqrMagnitude > 0.01f)
+            UpdateFacingDirection();
     }
 
-    public int GetDirectionY()
+    private void UpdateFacingDirection()
     {
-        int directionY = 0;
-        if (_rb.velocity.y < 0) //facing down
+        GetDirectionY(_pc.movement);
+        GetDirectionX(_pc.movement);
+    }
+
+    private void GetDirectionY(Vector2 movement)
+    {
+        if (movement.y < 0) //facing down
             directionY = -1;
-        else if (_rb.velocity.y > 0) //facing up
+        else if (movement.y > 0) //facing up
             directionY = 1;
-        return directionY;
     }
 
-    public int GetDirectionX()
+    private void GetDirectionX(Vector2 movement)
     {
-        int directionX = 0;
-        if (_rb.velocity.y < 0.5) //facing 
+        if (movement.x < 0) 
             directionX = -1;
-        else if (_rb.velocity.y > -0.5) //facing 
+        else if (movement.x > 0) 
             directionX = 1;
-        return directionX;
     }
 }

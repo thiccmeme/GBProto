@@ -9,12 +9,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _movementSpeed = 5f;
 
-    private Vector2 _movement;
+    public Vector2 movement;
 
     [SerializeField] private float playerFriction;
 
-    [SerializeField] public float _xSpeed; 
-    [SerializeField] public float _ySpeed;
+    [SerializeField] private float _xSpeed; 
+    [SerializeField] private float _ySpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,14 +28,14 @@ public class PlayerController : MonoBehaviour
     
     public void HandleMovementInput(Vector2 input)
     {
-        _movement = input;
+        movement = input.normalized;
         Debug.Log("fuck");
     }
     
     private void PlayerMovement()
     { 
         //_rb.velocity = Vector2.Lerp(_rb.velocity, _movement.normalized * _movementSpeed * Time.fixedDeltaTime, playerFriction);
-        _rb.velocity = _movement * _movementSpeed * Time.fixedDeltaTime;
+        _rb.velocity = movement * _movementSpeed * Time.fixedDeltaTime;
     }
     
     
