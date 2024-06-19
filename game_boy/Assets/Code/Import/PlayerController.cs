@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rb;
 
-    [SerializeField]private Vector2 _movementSpeed;
+    [SerializeField] private float _movementSpeed = 5f;
 
     private Vector2 _movement;
 
@@ -20,31 +20,22 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        HandleMovement();
-    }
-
-    Vector2 playerMovement()
-    { 
-        return Vector2.Lerp(_rb.velocity, _movement.normalized * _movementSpeed * Time.fixedDeltaTime, playerFriction);
-    }
     
+    void FixedUpdate()
+    {
+        PlayerMovement();
+    }
     
     public void HandleMovementInput(Vector2 input)
     {
         _movement = input;
         Debug.Log("fuck");
     }
-
-    private void HandleMovement()
-    {
-        _movementSpeed = new Vector2(_xSpeed, _ySpeed);
-
-        _rb.velocity = playerMovement();
-        Debug.Log("EA");
+    
+    private void PlayerMovement()
+    { 
+        //_rb.velocity = Vector2.Lerp(_rb.velocity, _movement.normalized * _movementSpeed * Time.fixedDeltaTime, playerFriction);
+        _rb.velocity = _movement * _movementSpeed * Time.fixedDeltaTime;
     }
     
     
