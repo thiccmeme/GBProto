@@ -14,6 +14,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private int damage;
     private bool attacking;
+    [SerializeField] private AudioSource _audio;
 
     // Update is called once per frame
     void Update()
@@ -81,9 +82,11 @@ public class Sword : MonoBehaviour
         if (other.CompareTag("Enemy") && attacking == true)
         {
             attacking = false;
+            _audio.Play();
             EnemyStats enemyStats = other.gameObject.GetComponent<EnemyStats>();
             enemyStats.DecreaseHealth(damage);
         }
         _particleSystem.Play();
+        
     }
 }
