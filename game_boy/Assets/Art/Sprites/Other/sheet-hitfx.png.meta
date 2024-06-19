@@ -113,12 +113,12 @@ TextureImporter:
       name: sheet-hitfx_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 5
+        y: 4
+        width: 7
+        height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,14 +134,22 @@ TextureImporter:
       name: sheet-hitfx_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 17
         y: 0
-        width: 16
-        height: 16
+        width: 15
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -4.5, y: 7.5}
+        - {x: -7.5, y: 3.5}
+        - {x: -7.5, y: -3.5}
+        - {x: -4.5, y: -7.5}
+        - {x: 5.5, y: -7.5}
+        - {x: 7.5, y: -4.5}
+        - {x: 7.5, y: 3.5}
+        - {x: 4.5, y: 7.5}
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -155,12 +163,12 @@ TextureImporter:
       name: sheet-hitfx_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 0
-        width: 16
-        height: 16
+        width: 15
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +184,12 @@ TextureImporter:
       name: sheet-hitfx_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
+        x: 49
+        y: 8
+        width: 7
+        height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,6 +197,69 @@ TextureImporter:
       bones: []
       spriteID: 9c2dd43f77c0f5a439a262bd04715f1e
       internalID: -1204808843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet-hitfx_4
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691822b9c0b05d7419546a29cb2abecb
+      internalID: -1376220029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet-hitfx_5
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1194d040d2a2fe44cac63f9bbac94c3f
+      internalID: 71924167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet-hitfx_6
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 0
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f33c2e7e9ef61a4db78967da9818d8d
+      internalID: 241123484
       vertices: []
       indices: 
       edges: []
@@ -208,6 +279,9 @@ TextureImporter:
       sheet-hitfx_1: 1465663307
       sheet-hitfx_2: -677674247
       sheet-hitfx_3: -1204808843
+      sheet-hitfx_4: -1376220029
+      sheet-hitfx_5: 71924167
+      sheet-hitfx_6: 241123484
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

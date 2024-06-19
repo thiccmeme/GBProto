@@ -13,9 +13,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float playerFriction;
 
-    [SerializeField] public float _xSpeed { get; private set; }
-    [SerializeField] public float _ySpeed { get; private set; }
-    
+    [SerializeField] public float _xSpeed; 
+    [SerializeField] public float _ySpeed;
     // Start is called before the first frame update
     void Start()
     {
