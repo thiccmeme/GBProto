@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : UnitSprite
 {
 
     private Rigidbody2D _rb;
@@ -33,6 +33,13 @@ public class Player : MonoBehaviour
         return Vector2.Lerp(_rb.velocity, _movement.normalized * _movementSpeed * Time.fixedDeltaTime, playerFriction);
     }
     
+    public override void Die()
+    {
+        Destroy(this);
+        Debug.Log("Kill Player.");
+        
+        //RESTART GAME
+    }
     
     public void HandleMovementInput(Vector2 input)
     {

@@ -8,11 +8,12 @@ public class Sword : MonoBehaviour
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private int damage = 10;
     [SerializeField] private bool useInput = false;
+    [SerializeField] private float pushbackForce = 5f; // Force applied to pushback the enemy
 
     private bool rotate = false;
     private bool swung = false;
     private bool attacking = false;
-
+    public string EnemyTag = "Enemy";
     private Quaternion initialRotation;
     private Quaternion targetRotation;
     private Quaternion ndTargetRotation;
@@ -77,15 +78,46 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") && attacking)
+        if (attacking)
         {
-            attacking = false;
-            EnemyStats enemyStats = other.gameObject.GetComponent<EnemyStats>();
-            if (enemyStats != null)
+            if (other.CompareTag(EnemyTag))
             {
-                enemyStats.DecreaseHealth(damage);
+                attacking = false;
+                EnemyStats enemyStats = other.gameObject.GetComponent<EnemyStats>();
+                BaseEnemy enemy = other.gameObject.GetComponent<BaseEnemy>();
+
+                if (enemyStats != null)
+                {
+                    enemyStats.DecreaseHealth(damage);
+
+                    if (enemyStats._enemyStats.health < 3)
+                    {
+                        Destroy(other.gameObject);
+                    }
+                }
+
+                if (enemy != null)
+                {
+                    // Calculate pushback direction
+                    Vector2 pushDirection = (other.transform.position - transform.position).normalized;
+                    enemy.Pushback(pushDirection * pushbackForce);
+                }
+
+                _particleSystem.Play();
             }
-            _particleSystem.Play();
+            else if (other.CompareTag("Player"))
+            {
+                attacking = false;
+                PlayerStats playerStats = other.gameObject.GetComponent<PlayerStats>();
+
+                if (playerStats != null)
+                {
+                    playerStats.DecreaseHealth(damage);
+                }
+
+                _particleSystem.Play();
+            }
         }
     }
+
 }

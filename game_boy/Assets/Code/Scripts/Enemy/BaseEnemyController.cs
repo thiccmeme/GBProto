@@ -70,9 +70,11 @@ namespace Code.Scripts.Enemy
                 MoveToLocation(PatrolPoints[CurrentPatrolIndex].position);
             }
         }
-
+      
         void Update()
         {
+     
+            
             if (Player == null) return;
 
             switch (CurrentState)
@@ -96,6 +98,7 @@ namespace Code.Scripts.Enemy
                     break;
             }
         }
+
 
         void MoveToLocation(Vector3 destination)
         {
