@@ -9,6 +9,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private int damage = 10;
     [SerializeField] private bool useInput = false;
     [SerializeField] private float pushbackForce = 5f; // Force applied to pushback the enemy
+    [SerializeField] private AudioSource _audio;
 
     private bool rotate = false;
     private bool swung = false;
@@ -89,6 +90,7 @@ public class Sword : MonoBehaviour
                 if (enemyStats != null)
                 {
                     enemyStats.DecreaseHealth(damage);
+                     _audio.Play();
 
                     if (enemyStats._enemyStats.health < 3)
                     {
@@ -117,6 +119,7 @@ public class Sword : MonoBehaviour
 
                 _particleSystem.Play();
             }
+           
         }
     }
 
