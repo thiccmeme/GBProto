@@ -1,89 +1,91 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    [SerializeField] Vector3 Inital; 
-    [SerializeField] Vector3 Target; 
-    [SerializeField] Vector3 ndTarget;
-    [SerializeField] float speed; 
-    [SerializeField] bool rotate = false;
-    private bool swung = false;
+    [SerializeField] private float swingAngle = 45f; // Angle to swing to in each direction
+    [SerializeField] private float speed = 5f; // Speed of the swing
     [SerializeField] private ParticleSystem _particleSystem;
-    [SerializeField] private int damage;
-    private bool attacking;
+    [SerializeField] private int damage = 10;
+    [SerializeField] private bool useInput = false;
 
-    // Update is called once per frame
-    void Update()
+    private bool rotate = false;
+    private bool swung = false;
+    private bool attacking = false;
+
+    private Quaternion initialRotation;
+    private Quaternion targetRotation;
+    private Quaternion ndTargetRotation;
+
+    private void Start()
     {
-        if (Input.GetMouseButtonDown(0)&& !rotate)
+        UpdateRotations();
+    }
+
+    public void UpdateRotations()
+    {
+        initialRotation = transform.localRotation;
+        targetRotation = initialRotation * Quaternion.Euler(0, 0, swingAngle);
+        ndTargetRotation = initialRotation * Quaternion.Euler(0, 0, -swingAngle);
+    }
+
+    public void Attack()
+    {
+        attacking = true;
+        if (!swung)
         {
-            attacking = true;
-            if (!swung)
-            {
-                rotate = true;
-                Rotate();
-                swung = true;
-            }
+            rotate = true;
+            StartCoroutine(RotateSword());
+            swung = true;
         }
     }
 
-    public void Rotate()
+    private void Update()
     {
-        StartCoroutine(RotateFromInitalToTarget());
+        if (useInput == false) return;
+
+        if (Input.GetMouseButtonDown(0) && !rotate)
+        {
+            Attack();
+        }
     }
 
-    IEnumerator RotateFromInitalToTarget()
+    private IEnumerator RotateSword()
     {
-        
         while (rotate)
         {
-            
-            // Rotate from A to B
-            for (float t = 0; t < 1; t += Time.deltaTime * speed)
-            {
-                transform.rotation = Quaternion.Slerp(Quaternion.Euler(Inital), Quaternion.Euler(Target), t);
-                yield return null;
-            }
-            
-            for (float t = 0; t < 1; t += Time.deltaTime * speed)
-            {
-                transform.rotation = Quaternion.Slerp(Quaternion.Euler(Target), Quaternion.Euler(ndTarget), t);
-                yield return null;
-            }
+            // Rotate from initial to target
+            yield return RotateTo(targetRotation);
+            // Rotate from target to ndTarget
+            yield return RotateTo(ndTargetRotation);
+            // Rotate from ndTarget back to initial
+            yield return RotateTo(initialRotation);
 
-            // Rotate from B to A
-            
-            
-            for (float t = 0; t < 1; t += Time.deltaTime * speed)
-            {
-                transform.rotation = Quaternion.Slerp(Quaternion.Euler(ndTarget), Quaternion.Euler(Inital), t);
-                yield return null;
-            }
-            
-            transform.rotation = (Quaternion.Euler(Inital));
             rotate = false;
             swung = false;
-            
+        }
+    }
 
-            
-
-
-            
+    private IEnumerator RotateTo(Quaternion target)
+    {
+        while (Quaternion.Angle(transform.localRotation, target) > 0.1f)
+        {
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, target, speed * Time.deltaTime);
+            yield return null;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.CompareTag("Enemy") && attacking == true)
+        if (other.CompareTag("Enemy") && attacking)
         {
             attacking = false;
             EnemyStats enemyStats = other.gameObject.GetComponent<EnemyStats>();
-            enemyStats.DecreaseHealth(damage);
+            if (enemyStats != null)
+            {
+                enemyStats.DecreaseHealth(damage);
+            }
+            _particleSystem.Play();
         }
-        _particleSystem.Play();
     }
 }

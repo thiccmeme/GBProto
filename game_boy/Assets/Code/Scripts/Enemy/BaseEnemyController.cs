@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 namespace Code.Scripts.Enemy
 {
-    public class BaseEnemyController : MonoBehaviour
+    public class BaseEnemyController : BaseEnemy
     {
         public enum EnemyState
         {
@@ -19,6 +19,7 @@ namespace Code.Scripts.Enemy
         public float AttackRange = 1.5f; // Range within which the enemy can attack the player
         public float DetectionRange = 5.0f; // Range within which the enemy can detect the player
         public float AttackCooldown = 2.0f; // Cooldown time between attacks
+        public Sword Sword; // Reference to the rotating sword
 
         [Header("Patrol Settings")]
         public bool CanPatrol = true; // Can the enemy patrol?
@@ -50,6 +51,15 @@ namespace Code.Scripts.Enemy
             else
             {
                 Debug.LogError("Player not found! Make sure the player GameObject is tagged as 'Player'.");
+            }
+
+            if (Sword == null)
+            {
+                Sword = GetComponentInChildren<Sword>();
+                if (Sword == null)
+                {
+                    Debug.LogError("Sword not found! Make sure the Sword script is attached to a child GameObject.");
+                }
             }
 
             CurrentPatrolIndex = 0;
@@ -107,15 +117,19 @@ namespace Code.Scripts.Enemy
 
         void Attack()
         {
-            // Implement attack logic here
-            Debug.Log("Attacking the player!");
-            LastAttackTime = Time.time;
+            if (Sword != null)
+            {
+                Sword.UpdateRotations(); // Update sword rotations based on current facing direction
+                Sword.Attack();
+                Debug.Log("Attacking the player with the sword!");
+                LastAttackTime = Time.time;
+            }
         }
 
         bool IsLookingAt(Vector3 target)
         {
             Vector3 directionToTarget = (target - transform.position).normalized;
-            float dotProduct = Vector3.Dot(transform.forward, directionToTarget);
+            float dotProduct = Vector3.Dot(transform.right, directionToTarget); // Assuming the sprite's right side is its forward direction
 
             return dotProduct > 0.95f; // Adjust the threshold as needed
         }
@@ -157,6 +171,8 @@ namespace Code.Scripts.Enemy
                     MoveToLocation(PatrolPoints[CurrentPatrolIndex].position);
                 }
             }
+
+            RotateTowards(Player.position); // Rotate to face the player
         }
 
         void Flee(Vector3 dangerPosition)
@@ -167,6 +183,24 @@ namespace Code.Scripts.Enemy
             MoveToLocation(fleePosition);
         }
 
+        void RotateTowards(Vector3 target)
+        {
+            Vector3 direction = (target - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            // Determine the relative position (left or right)
+            if (direction.x < 0)
+            {
+                // Rotate to the left
+                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            }
+            else
+            {
+                // Rotate to the right
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            }
+        }
+
         void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
@@ -174,13 +208,25 @@ namespace Code.Scripts.Enemy
 
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, DetectionRange);
+
+            if (CanPatrol && PatrolPoints != null)
+            {
+                Gizmos.color = Color.blue;
+                foreach (Transform patrolPoint in PatrolPoints)
+                {
+                    if (patrolPoint != null)
+                    {
+                        Gizmos.DrawSphere(patrolPoint.position, 0.5f);
+                    }
+                }
+            }
         }
 
         void OnValidate()
         {
             if (!CanPatrol)
             {
-                PatrolPoints = null;
+                PatrolPoints = new Transform[0];
             }
         }
     }
