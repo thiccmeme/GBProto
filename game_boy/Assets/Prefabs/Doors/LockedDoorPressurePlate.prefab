@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 57360701782991239}
-  - component: {fileID: 1692373794023676745}
   - component: {fileID: 4718513693998296336}
+  - component: {fileID: 4725978111010746368}
   m_Layer: 0
   m_Name: LockedDoorPressurePlate
   m_TagString: Untagged
@@ -28,13 +28,27 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2433837439294551275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1692373794023676745
+--- !u!114 &4718513693998296336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277857808040255304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c48dbf4d41cca940870c69bb6930835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exit: {fileID: 3922340872754407032}
+  _openedDoorSprite: {fileID: 1679790083, guid: 6a2a0dfa29d8fa94bae6928dc9d12a33, type: 3}
+--- !u!61 &4725978111010746368
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,22 +91,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &4718513693998296336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2277857808040255304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c48dbf4d41cca940870c69bb6930835, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _exit: {fileID: 3922340872754407032}
-  _openedDoorSprite: {fileID: 1679790083, guid: 6a2a0dfa29d8fa94bae6928dc9d12a33, type: 3}
 --- !u!1 &3922340872754407032
 GameObject:
   m_ObjectHideFlags: 0
