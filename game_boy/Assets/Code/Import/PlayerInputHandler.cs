@@ -17,7 +17,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
                 characterInput = new CharacterInput();
                 characterInput.CharacterMovement.Movement.performed += i => playerController?.HandleMovementInput(i.ReadValue<Vector2>());
-            
         }
 
         characterInput.Enable();
