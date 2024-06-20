@@ -2300,11 +2300,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 57360701782991239, guid: 6b5f5b3d318865248b8512d54f95226c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.13
+      value: -5.83
       objectReference: {fileID: 0}
     - target: {fileID: 57360701782991239, guid: 6b5f5b3d318865248b8512d54f95226c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.457775
+      value: -6.41
       objectReference: {fileID: 0}
     - target: {fileID: 57360701782991239, guid: 6b5f5b3d318865248b8512d54f95226c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2341,6 +2341,14 @@ PrefabInstance:
     - target: {fileID: 2277857808040255304, guid: 6b5f5b3d318865248b8512d54f95226c, type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119142850001971832, guid: 6b5f5b3d318865248b8512d54f95226c, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119142850001971832, guid: 6b5f5b3d318865248b8512d54f95226c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2610,7 +2618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3929628516283397910, guid: b7c2891ee14ae504caee36167ed2b6cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.56
+      value: -9.48
       objectReference: {fileID: 0}
     - target: {fileID: 3929628516283397910, guid: b7c2891ee14ae504caee36167ed2b6cd, type: 3}
       propertyPath: m_LocalPosition.z

@@ -10,7 +10,6 @@ public class Chest : MonoBehaviour
     PlayerStats _playerStats;
     UnityEvent decreaseKey;
     SpriteRenderer _spriteRenderer;
-    BoxCollider2D _ExitCollider;
 
     bool _isChestOpened = false;
 
@@ -38,9 +37,6 @@ public class Chest : MonoBehaviour
 
     public void OpenChest()
     {
-        _ExitCollider = _chest.GetComponent<BoxCollider2D>();
-        _ExitCollider.isTrigger = true; //"remove" collider
-
         _spriteRenderer = _chest.GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = _openedChestSprite; //change exit sprite
     }
@@ -49,8 +45,8 @@ public class Chest : MonoBehaviour
     {
         int collectableIndex = Random.Range(0, _collectables.Length);
         GameObject collectable = Instantiate(_collectables[collectableIndex], transform.position, Quaternion.identity);
-        //collectable = collectable.transform.Translate(collectable.transform.position + collectable.transform.position.); TODO finish collectable movement
-
         Debug.Log("Spawning: " + _collectables[collectableIndex]);
+
+        collectable.transform.Translate(Vector3.down);
     }
 }
