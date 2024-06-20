@@ -787,6 +787,14 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 1826134239655004638, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826134239655004638, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4564704408761563958, guid: 71724e07ba9dc7a47b7e21b91b4b2534, type: 3}
       propertyPath: m_Name
       value: mimic
@@ -1179,7 +1187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7215488221491447855, guid: ad124f3b49ae7884193f124ad8488a69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.3629637
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7215488221491447855, guid: ad124f3b49ae7884193f124ad8488a69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1508,6 +1516,10 @@ PrefabInstance:
     - target: {fileID: 2277857808040255304, guid: 26ac74e4760f67e41a1ea8a22ff9c873, type: 3}
       propertyPath: m_Name
       value: LockedDoorPressurePlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840316240567560858, guid: 26ac74e4760f67e41a1ea8a22ff9c873, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2027,7 +2039,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 100
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

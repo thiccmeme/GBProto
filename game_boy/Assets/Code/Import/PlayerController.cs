@@ -13,39 +13,29 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float playerFriction;
 
-    [SerializeField] private float _xSpeed; 
+    [SerializeField] private float _xSpeed;
+
     [SerializeField] private float _ySpeed;
+
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-    
+
     void FixedUpdate()
     {
         PlayerMovement();
     }
 
-    Vector2 playerMovement()
-    { 
-        return Vector2.Lerp(_rb.velocity, _movement.normalized * _movementSpeed * Time.fixedDeltaTime, playerFriction);
-    }
-
     public void HandleMovementInput(Vector2 input)
     {
-        _movement = input;
+        movement = input.normalized;
     }
 
-    private void HandleMovement()
+    private void PlayerMovement()
     {
-        _movementSpeed = new Vector2(_xSpeed, _ySpeed);
-
-        _rb.velocity = playerMovement();
+        //_rb.velocity = Vector2.Lerp(_rb.velocity, _movement.normalized * _movementSpeed * Time.fixedDeltaTime, playerFriction);
+        _rb.velocity = movement * _movementSpeed * Time.fixedDeltaTime;
     }
-    
-    
-    
-    
-    
-    
 }
