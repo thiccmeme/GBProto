@@ -19,7 +19,7 @@ namespace Code.Scripts.Enemy
         public float AttackRange = 1.5f; // Range within which the enemy can attack the player
         public float DetectionRange = 5.0f; // Range within which the enemy can detect the player
         public float AttackCooldown = 2.0f; // Cooldown time between attacks
-        public Sword Sword; // Reference to the rotating sword
+        public EnemySword enemySword; // Reference to the rotating sword
 
         [Header("Patrol Settings")]
         public bool CanPatrol = true; // Can the enemy patrol?
@@ -53,10 +53,10 @@ namespace Code.Scripts.Enemy
                 Debug.LogError("Player not found! Make sure the player GameObject is tagged as 'Player'.");
             }
 
-            if (Sword == null)
+            if (enemySword == null)
             {
-                Sword = GetComponentInChildren<Sword>();
-                if (Sword == null)
+                enemySword = GetComponentInChildren<EnemySword>();
+                if (enemySword == null)
                 {
                     Debug.LogError("Sword not found! Make sure the Sword script is attached to a child GameObject.");
                 }
@@ -120,10 +120,9 @@ namespace Code.Scripts.Enemy
 
         void Attack()
         {
-            if (Sword != null)
+            if (enemySword != null)
             {
-                Sword.UpdateRotations(); // Update sword rotations based on current facing direction
-                Sword.Attack();
+                enemySword.Rotate();
                 Debug.Log("Attacking the player with the sword!");
                 LastAttackTime = Time.time;
             }
