@@ -7,24 +7,23 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rb;
 
-    [SerializeField]private Vector2 _movementSpeed;
+    [SerializeField] private float _movementSpeed = 5f;
 
-    private Vector2 _movement;
+    public Vector2 movement;
 
     [SerializeField] private float playerFriction;
 
-    [SerializeField] public float _xSpeed; 
-    [SerializeField] public float _ySpeed;
+    [SerializeField] private float _xSpeed; 
+    [SerializeField] private float _ySpeed;
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
-        HandleMovement();
+        PlayerMovement();
     }
 
     Vector2 playerMovement()
