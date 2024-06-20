@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 540873880750046301}
   - component: {fileID: 8853385028163170063}
-  - component: {fileID: 1506607968253205346}
   - component: {fileID: 6390219347215768906}
+  - component: {fileID: 5285184915948265871}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.91, y: -3.11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -86614875
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1862669277, guid: 52bd4dcc48519f44d81711fa37e1b896, type: 3}
+  m_Sprite: {fileID: 392725386, guid: cd3cab26a9ed4d640aa536e49661f62a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1506607968253205346
+--- !u!114 &6390219347215768906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007632188006258477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b5d848e1738054d8caf8605cf6051c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthAmount: 10
+--- !u!61 &5285184915948265871
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,25 +135,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &6390219347215768906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5007632188006258477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b5d848e1738054d8caf8605cf6051c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthAmount: 10

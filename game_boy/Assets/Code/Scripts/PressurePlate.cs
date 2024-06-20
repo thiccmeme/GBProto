@@ -21,13 +21,11 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" ^ collision.gameObject.tag == "MovableObject")
-            openDoor.Invoke();
+        openDoor.Invoke();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" ^ collision.gameObject.tag == "MovableObject")
-            closeDoor.Invoke();
+        closeDoor.Invoke();
     }
 }
