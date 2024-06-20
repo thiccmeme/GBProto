@@ -23,7 +23,6 @@ public class EnemySword : MonoBehaviour
 
     public void Rotate()
     {
-        Debug.Log("EA");
         attacking = true;
         if (!swung)
         {
@@ -58,7 +57,6 @@ public class EnemySword : MonoBehaviour
             for (float t = 0; t < 1; t += Time.deltaTime * speed)
             {
                 transform.rotation = Quaternion.Slerp(Quaternion.Euler(ndTarget), Quaternion.Euler(Inital), t);
-                Debug.Log("EASport");
                 yield return null;
             }
             

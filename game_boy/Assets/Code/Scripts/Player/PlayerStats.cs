@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -62,5 +63,10 @@ public class PlayerStats : MonoBehaviour
         playerStats.keys--;
         Debug.Log("Keys: " + playerStats.keys);
         //TODO: Invoke UI event to update keys
+    }
+
+    public void OnEnable()
+    {
+        playerStats.health = playerStats.maxHealth;
     }
 }

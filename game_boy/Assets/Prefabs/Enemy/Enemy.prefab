@@ -5020,7 +5020,7 @@ MonoBehaviour:
   Inital: {x: 0, y: 0, z: 0}
   Target: {x: 0, y: 0, z: 45}
   ndTarget: {x: 0, y: 0, z: -45}
-  speed: 0
+  speed: 10
   rotate: 0
   _particleSystem: {fileID: 7749933819109877321}
   damage: 10
