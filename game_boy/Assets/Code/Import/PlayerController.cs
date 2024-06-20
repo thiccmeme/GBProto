@@ -31,12 +31,10 @@ public class PlayerController : MonoBehaviour
     { 
         return Vector2.Lerp(_rb.velocity, _movement.normalized * _movementSpeed * Time.fixedDeltaTime, playerFriction);
     }
-    
-    
+
     public void HandleMovementInput(Vector2 input)
     {
         _movement = input;
-        Debug.Log("fuck");
     }
 
     private void HandleMovement()
@@ -44,7 +42,6 @@ public class PlayerController : MonoBehaviour
         _movementSpeed = new Vector2(_xSpeed, _ySpeed);
 
         _rb.velocity = playerMovement();
-        Debug.Log("EA");
     }
     
     
