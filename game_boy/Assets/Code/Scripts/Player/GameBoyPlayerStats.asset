@@ -18,6 +18,5 @@ MonoBehaviour:
   maxPower: 100
   minPower: 0
   power: 100
-  minScore: 0
   score: 0
-  keys: 1
+  keys: 2

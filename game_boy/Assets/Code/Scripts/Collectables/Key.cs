@@ -5,6 +5,7 @@ public class Key : MonoBehaviour
 {
     PlayerStats _playerStats;
     UnityEvent increaseKey;
+    private bool canCollide = true;
 
     private void Awake()
     {
@@ -15,8 +16,9 @@ public class Key : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && canCollide)
         {
+            canCollide = false;
             increaseKey.Invoke();
             Destroy(this.gameObject);
         }

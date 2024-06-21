@@ -68,13 +68,13 @@ public class PlayerStats : MonoBehaviour
     {
         playerStats.keys++;
         Debug.Log("Keys: " + playerStats.keys);
-        //TODO: Invoke UI event to update keys
+        hud.UpdateKeys();
     }
 
     public void DecreaseKey()
     {
         playerStats.keys--;
         Debug.Log("Keys: " + playerStats.keys);
-        //TODO: Invoke UI event to update keys
+        hud.UpdateKeys();
     }
 }
