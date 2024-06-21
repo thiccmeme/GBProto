@@ -15,11 +15,14 @@ public class Player : UnitSprite
 
     [SerializeField] private float _xSpeed;
     [SerializeField] private float _ySpeed;
+
+    GameOverManager _gameOverManager;
     
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _gameOverManager = FindObjectOfType<GameOverManager>();
     }
 
     // Update is called once per frame
@@ -37,8 +40,9 @@ public class Player : UnitSprite
     {
         Destroy(this);
         Debug.Log("Kill Player.");
-        
+
         //RESTART GAME
+        _gameOverManager.HandleGameOver();
     }
     
     public void HandleMovementInput(Vector2 input)
