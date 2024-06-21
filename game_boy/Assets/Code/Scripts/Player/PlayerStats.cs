@@ -4,13 +4,13 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] public PlayerStatsSO playerStats;
-
-    [SerializeField] GameOverManager _gameOverManager;
-
-    public void OnEnable()
+    [SerializeField] private HUDManager hud;
+    [SerializeField] private GameOverManager _gameOverManager;
+    private void OnEnable() 
     {
         playerStats.health = playerStats.maxHealth;
-       
+        playerStats.power = playerStats.maxPower;
+        playerStats.keys = 0;
     }
 
     public void IncreaseHealth(int healthAmount)
@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
         playerStats.health += healthAmount;
         playerStats.health = Mathf.Clamp(playerStats.health, playerStats.minHealth, playerStats.maxHealth);
         Debug.Log("Health: " + playerStats.health);
-        //TODO: Invoke UI event to update health
+        hud.UpdateHealth();
     }
 
     public void DecreaseHealth(int healthAmount)
@@ -26,10 +26,7 @@ public class PlayerStats : MonoBehaviour
         playerStats.health -= healthAmount;
         Debug.Log("Health: " + playerStats.health);
         playerStats.health = Mathf.Clamp(playerStats.health, playerStats.minHealth, playerStats.maxHealth);
-        //TODO: Invoke UI event to update health
-
-        if (playerStats.health <= 0)
-            Die();
+        hud.UpdateHealth();
     }
 
     public void Die()
