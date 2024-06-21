@@ -51,7 +51,6 @@ MonoBehaviour:
   _collectables:
   - {fileID: 5007632188006258477, guid: 07675ea1e6273ac449654500b7241158, type: 3}
   - {fileID: 5303803467791461693, guid: b7c2891ee14ae504caee36167ed2b6cd, type: 3}
-  - {fileID: 5303803467791461693, guid: 0e782659187d95442bc3070267dd5655, type: 3}
 --- !u!61 &6119142850001971832
 BoxCollider2D:
   m_ObjectHideFlags: 0
