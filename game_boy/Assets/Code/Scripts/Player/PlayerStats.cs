@@ -4,21 +4,13 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] public PlayerStatsSO playerStats;
-    [SerializeField] private HUDManager hud;
-    [SerializeField] private GameOverManager _gameOverManager;
-    private void OnEnable() 
-    {
-        playerStats.health = playerStats.maxHealth;
-        playerStats.power = playerStats.maxPower;
-        playerStats.keys = 0;
-    }
 
     public void IncreaseHealth(int healthAmount)
     {
         playerStats.health += healthAmount;
         playerStats.health = Mathf.Clamp(playerStats.health, playerStats.minHealth, playerStats.maxHealth);
         Debug.Log("Health: " + playerStats.health);
-        hud.UpdateHealth();
+        //TODO: Invoke UI event to update health
     }
 
     public void DecreaseHealth(int healthAmount)
@@ -26,14 +18,7 @@ public class PlayerStats : MonoBehaviour
         playerStats.health -= healthAmount;
         Debug.Log("Health: " + playerStats.health);
         playerStats.health = Mathf.Clamp(playerStats.health, playerStats.minHealth, playerStats.maxHealth);
-        if(playerStats.health <= 0)
-            Die();
-        hud.UpdateHealth();
-    }
-
-    public void Die()
-    {
-        _gameOverManager.HandleGameOver();
+        //TODO: Invoke UI event to update health
     }
 
     public void IncreasePower(int powerAmount)
@@ -70,13 +55,18 @@ public class PlayerStats : MonoBehaviour
     {
         playerStats.keys++;
         Debug.Log("Keys: " + playerStats.keys);
-        hud.UpdateKeys();
+        //TODO: Invoke UI event to update keys
     }
 
     public void DecreaseKey()
     {
         playerStats.keys--;
         Debug.Log("Keys: " + playerStats.keys);
-        hud.UpdateKeys();
+        //TODO: Invoke UI event to update keys
+    }
+
+    public void OnEnable()
+    {
+        playerStats.health = playerStats.maxHealth;
     }
 }
