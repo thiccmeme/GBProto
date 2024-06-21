@@ -5,6 +5,14 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] public PlayerStatsSO playerStats;
 
+    [SerializeField] GameOverManager _gameOverManager;
+
+    public void OnEnable()
+    {
+        playerStats.health = playerStats.maxHealth;
+       
+    }
+
     public void IncreaseHealth(int healthAmount)
     {
         playerStats.health += healthAmount;
@@ -19,6 +27,14 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Health: " + playerStats.health);
         playerStats.health = Mathf.Clamp(playerStats.health, playerStats.minHealth, playerStats.maxHealth);
         //TODO: Invoke UI event to update health
+
+        if (playerStats.health <= 0)
+            Die();
+    }
+
+    public void Die()
+    {
+        _gameOverManager.HandleGameOver();
     }
 
     public void IncreasePower(int powerAmount)
@@ -63,10 +79,5 @@ public class PlayerStats : MonoBehaviour
         playerStats.keys--;
         Debug.Log("Keys: " + playerStats.keys);
         //TODO: Invoke UI event to update keys
-    }
-
-    public void OnEnable()
-    {
-        playerStats.health = playerStats.maxHealth;
     }
 }

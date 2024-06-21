@@ -16,16 +16,12 @@ public class Player : UnitSprite
     [SerializeField] private float _xSpeed;
     [SerializeField] private float _ySpeed;
 
-    GameOverManager _gameOverManager;
-    
-    // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _gameOverManager = FindObjectOfType<GameOverManager>();
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
         HandleMovement();
@@ -42,13 +38,11 @@ public class Player : UnitSprite
         Debug.Log("Kill Player.");
 
         //RESTART GAME
-        _gameOverManager.HandleGameOver();
     }
     
     public void HandleMovementInput(Vector2 input)
     {
         _movement = input;
-        Debug.Log("fuck");
     }
 
     private void HandleMovement()
@@ -56,10 +50,5 @@ public class Player : UnitSprite
         _movementSpeed = new Vector2(_xSpeed, _ySpeed);
 
         _rb.velocity = playerMovement();
-        Debug.Log("EA");
     }
-    
-    
-    
-    
 }
