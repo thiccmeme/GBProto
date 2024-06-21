@@ -26,6 +26,8 @@ public class PlayerStats : MonoBehaviour
         playerStats.health -= healthAmount;
         Debug.Log("Health: " + playerStats.health);
         playerStats.health = Mathf.Clamp(playerStats.health, playerStats.minHealth, playerStats.maxHealth);
+        if(playerStats.health <= 0)
+            Die();
         hud.UpdateHealth();
     }
 

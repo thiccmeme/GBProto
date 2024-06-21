@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
@@ -10,7 +12,8 @@ public class Sword : MonoBehaviour
     [SerializeField] private bool useInput = false;
     [SerializeField] private float pushbackForce = 5f; // Force applied to pushback the enemy
     [SerializeField] private AudioSource _audio;
-
+    [SerializeField] private GameObject pivotPoint;
+    
     private bool rotate = false;
     private bool swung = false;
     private bool attacking = false;
@@ -18,6 +21,12 @@ public class Sword : MonoBehaviour
     private Quaternion initialRotation;
     private Quaternion targetRotation;
     private Quaternion ndTargetRotation;
+    private PlayerDirection _dir;
+
+    private void Awake() //maybe redundant with start function, but want to be safe and not overwrite things
+    {
+        _dir = GetComponentInParent<PlayerDirection>();
+    }
 
     private void Start()
     {
@@ -29,6 +38,39 @@ public class Sword : MonoBehaviour
         initialRotation = transform.localRotation;
         targetRotation = initialRotation * Quaternion.Euler(0, 0, swingAngle);
         ndTargetRotation = initialRotation * Quaternion.Euler(0, 0, -swingAngle);
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateSwordPivot();
+    }
+
+    private void UpdateSwordPivot() //this is ugly, sorry
+    {
+        int direction = _dir.directionY - _dir.directionX;
+        switch (direction)
+        {
+            case -2:
+                pivotPoint.transform.rotation = Quaternion.Euler(0,0, 180f);
+                Debug.Log("case -2, y = " + _dir.directionY);
+                break;
+            case 0:
+                if (_dir.directionY == 1)
+                {
+                    pivotPoint.transform.rotation = Quaternion.Euler(0,0, 90f);
+                    Debug.Log("case 01, y = " + _dir.directionY);
+                }
+                else
+                {
+                    pivotPoint.transform.rotation = Quaternion.Euler(0,0, 270f);
+                    Debug.Log("case 02, y = " + _dir.directionY);
+                }
+                break;
+            case 2:
+                pivotPoint.transform.rotation = Quaternion.Euler(0,0, 0f);
+                Debug.Log("case 2, y = " + _dir.directionY);
+                break;
+        }
     }
 
     public void Attack()
