@@ -45,30 +45,26 @@ public class Sword : MonoBehaviour
         UpdateSwordPivot();
     }
 
-    private void UpdateSwordPivot() //this is ugly, sorry
+    private void UpdateSwordPivot() 
     {
-        int direction = _dir.directionY - _dir.directionX;
-        switch (direction)
+        switch (_dir.GetFacingDirection())
         {
-            case -2:
-                pivotPoint.transform.rotation = Quaternion.Euler(0,0, 180f);
-                Debug.Log("case -2, y = " + _dir.directionY);
-                break;
             case 0:
-                if (_dir.directionY == 1)
-                {
-                    pivotPoint.transform.rotation = Quaternion.Euler(0,0, 90f);
-                    Debug.Log("case 01, y = " + _dir.directionY);
-                }
-                else
-                {
-                    pivotPoint.transform.rotation = Quaternion.Euler(0,0, 270f);
-                    Debug.Log("case 02, y = " + _dir.directionY);
-                }
-                break;
+            case 1:
             case 2:
-                pivotPoint.transform.rotation = Quaternion.Euler(0,0, 0f);
-                Debug.Log("case 2, y = " + _dir.directionY);
+            case 8:
+                pivotPoint.transform.localRotation = Quaternion.Euler(0, 0, 270f);
+                break;
+            case 3:
+                pivotPoint.transform.localRotation = Quaternion.Euler(0, 0, 0f);
+                break;
+            case 4:
+            case 5:
+            case 6:
+                pivotPoint.transform.localRotation = Quaternion.Euler(0, 0, 90f);
+                break;
+            case 7:
+                pivotPoint.transform.localRotation = Quaternion.Euler(0, 0, 180f);
                 break;
         }
     }
