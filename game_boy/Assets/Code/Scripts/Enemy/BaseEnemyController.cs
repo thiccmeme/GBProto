@@ -175,6 +175,8 @@ namespace Code.Scripts.Enemy
                 if (CanPatrol && PatrolPoints.Length > 0)
                 {
                     MoveToLocation(PatrolPoints[CurrentPatrolIndex].position);
+                    RotateTowards(PatrolPoints[CurrentPatrolIndex].position);
+                    return;
                 }
             }
 
