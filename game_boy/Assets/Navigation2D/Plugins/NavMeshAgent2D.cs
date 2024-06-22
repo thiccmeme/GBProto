@@ -85,7 +85,7 @@ public class NavMeshAgent2D : MonoBehaviour
         if (rigidbody2D == null || rigidbody2D.isKinematic)
             transform.position = NavMeshUtils2D.ProjectTo2D(agent.transform.position);
 
-        // stuck detection
+        /*// stuck detection
         if (IsStuck())
         {
             // stop agent movement, reset it to current position
@@ -93,7 +93,7 @@ public class NavMeshAgent2D : MonoBehaviour
             // project object to 3D (at y=0.5 so feet are at y=0 on navmesh)
             agent.transform.position = NavMeshUtils2D.ProjectObjectTo3D(transform.position);
             Debug.Log("stopped agent because of collision in 2D plane");
-        }
+        }*/
     }
 
     void LateUpdate()

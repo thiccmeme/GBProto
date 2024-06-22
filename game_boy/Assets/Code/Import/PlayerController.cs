@@ -36,6 +36,6 @@ public class PlayerController : MonoBehaviour
     private void PlayerMovement()
     {
         //_rb.velocity = Vector2.Lerp(_rb.velocity, _movement.normalized * _movementSpeed * Time.fixedDeltaTime, playerFriction);
-        _rb.velocity = movement * _movementSpeed * Time.fixedDeltaTime;
+        _rb.velocity = movement * (_movementSpeed * Time.fixedDeltaTime);
     }
 }

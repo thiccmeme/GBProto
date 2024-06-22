@@ -37,9 +37,12 @@ namespace Code.Scripts.Enemy
         private float LastAttackTime;
         private int CurrentPatrolIndex;
         private EnemyState CurrentState;
+        private EnemyAnimation _ea;
+        public float EnemyAngle { get; private set; }
 
         void Start()
         {
+            _ea = GetComponent<EnemyAnimation>();
             NavMesh = GetComponent<NavMeshAgent2D>();
             LastAttackTime = -AttackCooldown;
 
@@ -71,11 +74,11 @@ namespace Code.Scripts.Enemy
             }
         }
       
-        void Update()
+        void FixedUpdate()
         {
      
             
-            if (Player == null) return;
+            //if (Player == null) return;
 
             switch (CurrentState)
             {
@@ -120,12 +123,12 @@ namespace Code.Scripts.Enemy
 
         void Attack()
         {
-            if (enemySword != null)
-            {
+            //if (enemySword != null)
+            //{
                 enemySword.Rotate();
                 Debug.Log("Attacking the player with the sword!");
                 LastAttackTime = Time.time;
-            }
+            //}
         }
 
         bool IsLookingAt(Vector3 target)
@@ -144,6 +147,7 @@ namespace Code.Scripts.Enemy
             {
                 CurrentPatrolIndex = (CurrentPatrolIndex + 1) % PatrolPoints.Length;
                 MoveToLocation(PatrolPoints[CurrentPatrolIndex].position);
+                RotateTowards(PatrolPoints[CurrentPatrolIndex].position);
             }
 
             if (IsPlayerDetected())
@@ -189,17 +193,20 @@ namespace Code.Scripts.Enemy
         {
             Vector3 direction = (target - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            EnemyAngle = angle;
+            _ea.HandleAnimation();
+            //Debug.Log("enemy angle is " + EnemyAngle);
 
             // Determine the relative position (left or right)
             if (direction.x < 0)
             {
                 // Rotate to the left
-                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                transform.rotation = Quaternion.Euler(new Vector3(0, 00, 0));
             }
             else
             {
                 // Rotate to the right
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             }
         }
 
